@@ -247,7 +247,7 @@ const MultiSelect = ({ label, options, selected, onChange, max = Infinity }) => 
                     if (selected.includes(option)) { onChange(selected.filter(i => i !== option)); } 
                     else if (selected.length < max) { onChange([...selected, option]); } 
                     else if (max === 1) { onChange([option]); }
-                }} className={`px-3 py-1 rounded-full text-sm font-medium transition ${selected.includes(option) ? 'bg-gray-600 text-white dark:bg-gray-500' : 'bg-gray-300 text-gray-700 dark:bg-gray-600 dark:text-gray-200 hover:bg-gray-400 dark:hover:bg-gray-500'}`}>{option}</button>
+                }} className={`px-3 py-1 rounded-full text-sm font-medium transition ${selected.includes(option) ? 'bg-blue-600 text-white' : 'bg-gray-300 text-gray-700 dark:bg-gray-600 dark:text-gray-200 hover:bg-gray-400 dark:hover:bg-gray-500'}`}>{option}</button>
             ))}
         </div>
     </div>
@@ -266,13 +266,6 @@ function App() {
 
   const totalCarSeats = useMemo(() => cars.reduce((sum, car) => sum + car.capacity, 0), [cars]);
 
-  // This effect hook is responsible for applying the theme.
-  // It adds/removes the 'dark' class to the root <html> element.
-  // This is the standard way to implement theme switching with Tailwind CSS.
-  // For this to work correctly on your local server, ensure:
-  // 1. Your `tailwind.config.js` has `darkMode: 'class'`.
-  // 2. The main `index.html` file has a simple `<body>` tag where the React app is mounted,
-  //    without any other classes that might conflict with the background colors.
   useEffect(() => {
     const root = window.document.documentElement;
     root.classList.remove(theme === 'dark' ? 'light' : 'dark');
