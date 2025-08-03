@@ -352,7 +352,7 @@ function App() {
         if (finalAssignments) {
             const allAssigned = Object.values(finalAssignments).flatMap(c => c.people);
             if (new Set(allAssigned).size !== allAssigned.length) {
-                setError("Assignment Error: A person was assigned to multiple cars. Please try again.");
+                setError("Assignment Error: A person was assigned to multiple cars. Please check your rules and try again.");
             } else {
                 setAssignments(finalAssignments);
             }
